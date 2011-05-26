@@ -1,0 +1,1 @@
+The register ri4 must have a value >= 2000.

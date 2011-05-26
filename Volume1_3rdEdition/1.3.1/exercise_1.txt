@@ -1,0 +1,1 @@
+There would be 4 trits in a MIX byte for a total of 81 possible values.
