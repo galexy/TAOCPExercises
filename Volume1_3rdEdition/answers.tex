@@ -1,0 +1,28 @@
+\documentclass {article}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\renewcommand{\thesubsubsection}{Section \arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+
+\pagestyle{fancy}
+
+\begin{document}
+	\setcounter{section}{1}
+	\renewcommand{\thesubsection}{Section \arabic{section}.\arabic{subsection}}
+	\subsection{}
+	\begin{enumerate}
+		\item \input {1.1/exercise_1}
+		\item \input {1.1/exercise_2}
+		\item \input {1.1/exercise_3}
+	\end{enumerate}
+	\renewcommand{\thesubsection}{}
+	
+	\setcounter{subsection}{2}
+	\subsubsection{}
+	\begin{enumerate}
+		\item test
+	\end{enumerate}
+\end{document}

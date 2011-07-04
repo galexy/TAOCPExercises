@@ -1,0 +1,9 @@
+\begin{enumerate}[label=\textbf{F\arabic*.},ref=F\arabic*]
+	\item \label{FindRemainder} [Find remainder.] Divide $m$ by $n$ and let $r$ be the remainder. (We will have $0 \leq r < n$.)
+	\item \label{IsItZero1} [Is it zero?] If $r = 0$, the algorithm terminates; $n$ is the answer.
+	\item \label{FindRemainder2} [Find remainder 2.] Divide $n$ by $r$ and let $m$ be the remainder. (We will have $0 \leq m  < r$.)
+	\item \label{IsItZero2} [Is it zero?] If $m = 0$, the algorithm terminates; $r$ is the answer.
+	\item \label{FindRemainder3} [Find remainder 3.] Divide $r$ by $m$ and let $n$ be the remainder.
+	\item \label{IsItZero3} [Is it zero?] If $n = 0$, the algorithm terminates; $m$ is the answer, 
+	otherwise go to step \ref{FindRemainder}.	
+\end{enumerate}
