@@ -1,0 +1,4 @@
+STZ 0
+ENT1 1
+MOVE 0(64)
+MOVE 64(35)

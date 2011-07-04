@@ -1,0 +1,5 @@
+There is no difference for JNOV 1001.
+
+JOV 1000 would execute twice, but otherwise is the same.
+
+JNOV 1000 would go into an infinite loop if the overflow toggle was not on.
