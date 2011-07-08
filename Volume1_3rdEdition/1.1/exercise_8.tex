@@ -1,0 +1,30 @@
+The problem comes down to repeatedly transforming a string in the form of $a^{m}b^{n}$
+into $a^{min(m, n)}b^{|m - n|}$ until only $a$s remains. At that point, the length of
+the string is $gcd(m, n)$. 
+
+The trick is to perform a series of match and replaces. The
+computation method allows us to find strings and replace them with other strings. To find
+$|m - n|$, the difference between $m$ and $n$, we continually search for the string $ab$
+and replace it with an empty string until there are no more matches. At that point,
+we are left with only $a$s or $b$s. We can then search for $a$ and replace it with $c$
+and $b$ and replace that with $c$. The end result is a string of $c$s who's length is
+the difference.
+
+Finding $min(m, n)$ requires an additional trick. We need to search for $ab$ as we did
+for computing the difference, but we also need to store how many matches we have seen
+thus far. This requires a `loop' with two steps. The first matches $ab$ and if successful,
+replace it with the empty string and continues to step two. The second step unconditionally
+adds a $c$ to the front and goes back to step two. This is the really tricky part. Eventually, 
+we are left with $c^{min(m, n)}(a|b)^{|m - n|}$. That is we have $min(m, n)$ number of $c$s 
+followed by $|m - n|$ number of $a$ or $b$. Finally, we transform $c$ into $a$ and $a$ 
+into $b$ to get $a^{min(m, n)}b^{|m - n|}$. When there are no more $b$s, the algorithm
+terminates with $a^{gcd(m, n)}$.
+
+\begin{tabular}{llllll}
+	$j$ & $\theta_{j}$ & $\phi_{j}$ & $a_{j}$ & $b_{j}$ & \emph{Comment} \\
+	0 & `ab' & `' & 2 & 1 & Replace `ab' with an empty string \\
+	1 & `' & `c' & 0 & 0 & Append a `c' in the front \\
+	2 & `a' & `b' & 3 & 2 & Replace `a' with `b' \\
+	3 & `c' & `a' & 4 & 3 & Replace `c' with `a' \\
+	4 & `b' & `b' & 5 & 0 & Check if there are any `b's. If so, go to step 0. \\
+\end{tabular}
