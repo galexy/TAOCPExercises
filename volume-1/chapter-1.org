@@ -1,6 +1,6 @@
-* Chapter 1 - Basic Concepts
+* Basic Concepts
 
-** 1.1 - Algorithms
+** Algorithms
 
 1. [10] The text showed how to interchange the values of variables $m$ and $n$,
    using the replacement notation, by setting $t \leftarrow m, m \leftarrow n, n
@@ -8,7 +8,38 @@
    rearranged to $(b, c, d, a)$ by a sequence of replacements. In other words,
    the new value of $a$ is to be the original value of $b$, etc. Try to use the
    minimum number of replacements.
-Answer
-#+BEGIN_LATEX
-t \leftarrow a, a \leftarrow b, b \leftarrow c, c \leftarrow d, d \leftarrow t
-#+END_LATEX
+
+   *Answer*
+   #+BEGIN_LATEX
+   t \leftarrow a, a \leftarrow b, b \leftarrow c, c \leftarrow d, d \leftarrow t
+   #+END_LATEX
+
+2. [15] Prove that $m$ is always greater than $n$ at the beginning of step E1,
+   except possibly the first time this step occurs.
+
+   *Answer*
+
+   At the end of step E3, $m$ is the original value of $n$ and $n$ is the
+   remainder after step E2. Because the remainder must be less than the original
+   value of $n$, $n$ is now less than $m$.
+
+3. [20] Change Algorithm E (for the sake of efficiency) so that all trivial
+   replacement operations such as "$m \leftarrow $n" are avoided. Write this new
+   algorithm in the style of Algorithm E, and call if Algorithm F.
+
+   *Answer*
+
+   To eliminate the trivial assignments, we need to switch role of remainder and
+   divisor between the variables $m$ and $n$ each time we compute a remainder.
+   We can unfold the loop and not need to maintain a flag indicating which
+   variable is the divisor.
+
+   *Algorithm F*
+   - F1 :: [Make sure m > n] If $m$ < $n$, $t \leftarrow m$, $m \leftarrow n$, $n \leftarrow t$
+   - F2 :: [Find remainder] Divide $m$ by $n$ and let $m$ be the remainder.
+   - F3 :: [Is m zero?] If $m = 0$, then the algorithm terminates, $n$ is the answer.
+   - F4 :: [Find remainder] Divide $n$ by $m$ and let $n$ be the remainder.
+   - F5 :: [Is n zero?] If $n = 0$, then the algorithm terminates, $m$ is the answer.
+   - F6 :: [Go back] Go back to step F2.
+
+
