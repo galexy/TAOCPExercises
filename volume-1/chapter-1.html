@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-12-20 Wed 08:00 -->
+<!-- 2017-12-21 Thu 09:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -255,24 +255,29 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb9ac358">1. Basic Concepts</a>
+<li><a href="#org614c15c">1. Basic Concepts</a>
 <ul>
-<li><a href="#org167fd1b">1.1. Algorithms</a></li>
+<li><a href="#org848c1b8">1.1. Algorithms</a></li>
+<li><a href="#org053b95e">1.2. Mathematical Preliminaries</a>
+<ul>
+<li><a href="#org01ca008">1.2.1. Mathematical Induction</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb9ac358" class="outline-2">
-<h2 id="orgb9ac358"><span class="section-number-2">1</span> Basic Concepts</h2>
+<div id="outline-container-org614c15c" class="outline-2">
+<h2 id="org614c15c"><span class="section-number-2">1</span> Basic Concepts</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org167fd1b" class="outline-3">
-<h3 id="org167fd1b"><span class="section-number-3">1.1</span> Algorithms</h3>
+<div id="outline-container-org848c1b8" class="outline-3">
+<h3 id="org848c1b8"><span class="section-number-3">1.1</span> Algorithms</h3>
 <div class="outline-text-3" id="text-1-1">
 <ol class="org-ol">
 <li><p>
-[10] The text showed how to interchange the values of variables \(m\) and \(n\),
+[/10/] The text showed how to interchange the values of variables \(m\) and \(n\),
 using the replacement notation, by setting \(t \leftarrow m, m \leftarrow n, n
    \leftarrow t\). Show how the values of <i>four</i> variables \((a, b, c, d)\) can be
 rearranged to \((b, c, d, a)\) by a sequence of replacements. In other words,
@@ -291,7 +296,7 @@ t &larr; a, a &larr; b, b &larr; c, c &larr; d, d &larr; t
 </div></li>
 
 <li><p>
-[15] Prove that \(m\) is always greater than \(n\) at the beginning of step E1,
+[/15/] Prove that \(m\) is always greater than \(n\) at the beginning of step E1,
 except possibly the first time this step occurs.
 </p>
 
@@ -305,15 +310,118 @@ remainder after step E2. Because the remainder must be less than the original
 value of \(n\), \(n\) is now less than \(m\).
 </p></li>
 
-<li></li>
+<li><p>
+[/20/] Change Algorithm E (for the sake of efficiency) so that all trivial
+replacement operations such as "$m &larr; $n" are avoided. Write this new
+algorithm in the style of Algorithm E, and call if Algorithm F.
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+To eliminate the trivial assignments, we need to switch role of remainder and
+divisor between the variables \(m\) and \(n\) each time we compute a remainder.
+We can unfold the loop and not need to maintain a flag indicating which
+variable is the divisor.
+</p>
+
+<p>
+<b>Algorithm F</b>
+</p>
+<dl class="org-dl">
+<dt>F1</dt><dd>[Make sure m &gt; n] If \(m\) &lt; \(n\), \(t \leftarrow m\), \(m \leftarrow n\), \(n \leftarrow t\)</dd>
+<dt>F2</dt><dd>[Find remainder] Divide \(m\) by \(n\) and let \(m\) be the remainder.</dd>
+<dt>F3</dt><dd>[Is m zero?] If \(m = 0\), then the algorithm terminates, \(n\) is the answer.</dd>
+<dt>F4</dt><dd>[Find remainder] Divide \(n\) by \(m\) and let \(n\) be the remainder.</dd>
+<dt>F5</dt><dd>[Is n zero?] If \(n = 0\), then the algorithm terminates, \(m\) is the answer.</dd>
+<dt>F6</dt><dd>[Go back] Go back to step F2.</dd>
+</dl></li>
+
+<li><p>
+[/16/] What is the greatest common divisor of 2166 and 6099?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+6099/2166, 2166/1767, 1767/399, 399/171, 171/57
+</p>
+
+<p>
+57
+</p></li>
+
+<li><p>
+[/12/] Show that the "Procedure for Reading This Set of Books" that appears
+in the preface actually fails to be a genuine algorithm on three of our five
+counts! Also mention some differences in format between it and Algorithm E.
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+Finiteness - the algorithm procedure doesn't end
+Definiteness - steps are ambiguous
+Output - There may be no output
+Effectiveness
+</p></li>
+
+<li><p>
+[/20/] What is \(T_{5}\), the average number of times step E1 is performed when \(n = 5\)?
+</p>
+
+<p>
+If \(m = 1\), E1 is executed 2 times
+If \(m = 2\), E1 is executed 3 times
+If \(m = 3\), E1 is executed 3 times
+If \(m = 4\), E1 is executed 3 times
+If \(m = 5\), E1 is executed 1 time
+</p>
+
+<p>
+(2 + 3 + 3 + 3 + 1) / 5 = 12/5
+</p></li>
+
+<li><p>
+[/M21/] Suppose that \(m\) is known and \(n\) is allowed to range over all
+positive integers; let \(U_{m}\) be the average number of times step E1 is
+execute in Algorithm E. Show that \(U_{m}\) is well defined. Is \(U_{m}\) in any
+way related to \(T_{m}\)?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+There are an infinite number of cases where \(n > m\), which overwhelms the
+average. Therefore, after the first execution of E1, we are looking at
+another version of \(T_{m}\). So, the average is \(1 + T_{m}\).
+</p></li>
 </ol>
+</div>
+</div>
+
+
+<div id="outline-container-org053b95e" class="outline-3">
+<h3 id="org053b95e"><span class="section-number-3">1.2</span> Mathematical Preliminaries</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org01ca008" class="outline-4">
+<h4 id="org01ca008"><span class="section-number-4">1.2.1</span> Mathematical Induction</h4>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Galex Yen</p>
-<p class="date">Created: 2017-12-20 Wed 08:00</p>
+<p class="date">Created: 2017-12-21 Thu 09:53</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

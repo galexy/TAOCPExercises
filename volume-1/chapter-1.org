@@ -2,7 +2,7 @@
 
 ** Algorithms
 
-1. [10] The text showed how to interchange the values of variables $m$ and $n$,
+1. [/10/] The text showed how to interchange the values of variables $m$ and $n$,
    using the replacement notation, by setting $t \leftarrow m, m \leftarrow n, n
    \leftarrow t$. Show how the values of /four/ variables $(a, b, c, d)$ can be
    rearranged to $(b, c, d, a)$ by a sequence of replacements. In other words,
@@ -14,7 +14,7 @@
    t \leftarrow a, a \leftarrow b, b \leftarrow c, c \leftarrow d, d \leftarrow t
    #+END_LATEX
 
-2. [15] Prove that $m$ is always greater than $n$ at the beginning of step E1,
+2. [/15/] Prove that $m$ is always greater than $n$ at the beginning of step E1,
    except possibly the first time this step occurs.
 
    *Answer*
@@ -23,7 +23,7 @@
    remainder after step E2. Because the remainder must be less than the original
    value of $n$, $n$ is now less than $m$.
 
-3. [20] Change Algorithm E (for the sake of efficiency) so that all trivial
+3. [/20/] Change Algorithm E (for the sake of efficiency) so that all trivial
    replacement operations such as "$m \leftarrow $n" are avoided. Write this new
    algorithm in the style of Algorithm E, and call if Algorithm F.
 
@@ -41,5 +41,50 @@
    - F4 :: [Find remainder] Divide $n$ by $m$ and let $n$ be the remainder.
    - F5 :: [Is n zero?] If $n = 0$, then the algorithm terminates, $m$ is the answer.
    - F6 :: [Go back] Go back to step F2.
+
+4. [/16/] What is the greatest common divisor of 2166 and 6099?
+
+   *Answer*
+
+   6099/2166, 2166/1767, 1767/399, 399/171, 171/57
+
+   57
+
+5. [/12/] Show that the "Procedure for Reading This Set of Books" that appears
+   in the preface actually fails to be a genuine algorithm on three of our five
+   counts! Also mention some differences in format between it and Algorithm E.
+
+   *Answer*
+
+   Finiteness - the algorithm procedure doesn't end
+   Definiteness - steps are ambiguous
+   Output - There may be no output
+   Effectiveness
+
+6. [/20/] What is $T_{5}$, the average number of times step E1 is performed when $n = 5$?
+
+   If $m = 1$, E1 is executed 2 times
+   If $m = 2$, E1 is executed 3 times
+   If $m = 3$, E1 is executed 3 times
+   If $m = 4$, E1 is executed 3 times
+   If $m = 5$, E1 is executed 1 time
+
+   (2 + 3 + 3 + 3 + 1) / 5 = 12/5
+
+7. [/M21/] Suppose that $m$ is known and $n$ is allowed to range over all
+   positive integers; let $U_{m}$ be the average number of times step E1 is
+   execute in Algorithm E. Show that $U_{m}$ is well defined. Is $U_{m}$ in any
+   way related to $T_{m}$?
+
+   *Answer*
+
+   There are an infinite number of cases where $n > m$, which overwhelms the
+   average. Therefore, after the first execution of E1, we are looking at
+   another version of $T_{m}$. So, the average is $1 + T_{m}$.
+
+
+** Mathematical Preliminaries
+
+*** Mathematical Induction
 
 
