@@ -214,6 +214,16 @@
    \begin{align*}
      n + \dfrac{b_{1}}{2} + \dfrac{b_{2}}{4} + \dfrac{b_{3}}{8} + \cdots + \dfrac{b_{k}}{2^{k}}
    \le x
-   \lt n + \dfrac{b_{1}}{2} + \dfrac{b_{2}}{4} + \dfrac{b_{3}}{8} + \cdots + \dfrac{b_{k}}{2^{k}} + \dfrac{1}{2^{k+1}
+   \lt n + \dfrac{b_{1}}{2} + \dfrac{b_{2}}{4} + \dfrac{b_{3}}{8} + \cdots + \dfrac{b_{k}}{2^{k}} + \dfrac{1}{2^{k+1}}
    \end{align*}
+
+6. [10] Let $x = m + 0.d_{1}d_{2}\dots$ and $y = n + 0.e_{1}e_{2}\dots$ be real
+   numbers. Give a rule for determining whether $x = y$, $x < y$, or $x > y$, based on
+   decimal representation.
+
+   *Answer*
+
+   If $m > n$ then $x > y$ or if $m < n$ then $x < y$. Otherwise, if there
+   exists a $k$ such that $d_{k} > e_{k}$ then $m > n$. Or, if there exists a
+   $k$ such at $d_{k} < e_{k}$, then $m < n$, otherwise $m = n$.
 
