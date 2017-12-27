@@ -227,3 +227,32 @@
    exists a $k$ such that $d_{k} > e_{k}$ then $m > n$. Or, if there exists a
    $k$ such at $d_{k} < e_{k}$, then $m < n$, otherwise $m = n$.
 
+7. [M23] Given that $x$ and $y$ are integers, prove the laws of exponents,
+   starting from the definition given by Eq. (4).
+
+   *Answer*
+
+   Prove inductively on $y$. If $y = 1$, then $b^{x+1} = b^{x}b$. Assuming
+   $b^{x+n} = b^{x}b^{n}$, then $b^{x+n+1} = b^{x+n}b = b^{x}b^{n}b = b^{x}b^{n+1}$
+
+8. [25] Let $m$ be a positive integer. /Prove/ that every positive real number
+   $u$ has a unique $m$th root, by giving a method to construct successively the
+   values $n$, $d_1$, $d_2$, ... in the decimal expansion of the root.
+
+9. [M23] GGive that $x$ and $y$ are rational, prove the laws of exponents under
+   the assumption that the laws hold when $x$ and $y$ are integers.
+
+10. [18] Prove that $log_{10}2$ is not a rational number.
+
+    *Answer*
+
+    $log_{10}2 = \dfrac{log_{2}2}{log_{2}10} = \dfrac{1}{log_{2}10}$
+
+    The demonstrator is not an integer, therefore not a rational number.
+
+11. [10] If $b = 10$ and $x \approx log_{10}2$, to how many decimal places of
+    accuracy will we need to know the value of $x$ in order to determine the
+    first three decimal places of the decimal expansion.
+
+    
+
