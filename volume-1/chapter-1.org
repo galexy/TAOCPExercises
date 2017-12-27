@@ -1,4 +1,6 @@
- #+HTML_MATHJAX: align: left indent: 5em tagside: left font: Neo-Euler
+#+ATTR_HTML: :border 2 :rules all :frame border
+#+HTML_MATHJAX: align: left indent: 5em tagside: left font: Neo-Euler
+
 
 * Basic Concepts
 
@@ -301,7 +303,99 @@
    DIV -80, 3
    #+END_SRC
 
-6. 
+6. [10] Assume that location 3000 contains
+
+  |---+---+---+-----+----|
+  | + | 5 | 1 | 200 | 15 |
+  |---+---+---+-----+----|
+
+  What is the result of the following instructions? (a) ~LDAN 3000~
+  (b) ~LD2N 3000(3:4)~ (c) ~LDX 3000(1:3)~ (d) ~LD6 3000~ (e) LDXN 3000(0:0).
+
+  *Answer*
+
+  (a) rA is set to 
+  |---+---+---+-----+----|
+  | - | 5 | 1 | 200 | 15 |
+  |---+---+---+-----+----|
+
+  (b) r2 = -200
+
+  (c) rX is set to
+  |---+---+---+---+---+---|
+  | + | 0 | 0 | 5 | 1 | ? |
+  |---+---+---+---+---+---|
+
+  (d) undefined
+
+  (e) rX is set to
+  |---+---+---+---+---+---|
+  | - | 0 | 0 | 0 | 0 | 0 |
+  |---+---+---+---+---+---|
+
+7. [M15] Give a precise definition of the results of the ~DIV~ instruction for
+   all cases in which overflow does not occur, using the algebraic operations 
+   $X \bmod Y$ and $\lfloor X / Y \rfloor$.
+
+8. [15] The last example of the ~DIV~ instruction that appears on page 133 has
+   "rX before" equal to ~[+|1235|0|3|1]~. If this were ~[-|1234|0|3|1]~ instead,
+   but other parts of that example were unchanged, what would registers A and X
+   contain after the ~DIV~ instruction?
+
+   *Answer*
+
+   rA is set to ~[+|0|617|0|1].
+
+9. [15] List all the ~MIX~ operators that can possibly affect the settings of
+   the overflow toggle. (Do not include floating point operators.)
+
+   *Answer*
+
+   ~ADD~, ~SUB~, ~DIV~, ~INCA~, ~INCX~, ~DECA~, ~DECX~, ~JOV~, ~JNOV~, ~NUM~
+
+10. [15] List all the ~MIX~ operators that can possibly affect the setting of
+    the comparison indicator.
+
+    *Answer*
+
+    ~CMPA~, ~CMPX~, ~CMP1~, ~CMP2~, ~CMP3~, ~CMP4~, ~CMP5~, ~CMP6~
+
+11. [15] List all the ~MIX~ operators that con possible affect the setting of
+    rI1.
+
+    *Answer*
+
+    ~LD1~, ~LDN1~, ~ENT1~, ~ENN1~, ~INC1~, ~DEC1~, ~MOVE~
+
+12. [10] Find a single instruction that has the effect of multiplying the
+    current contents of rI3 by two and leaving the result in rI3.
+
+    *Answer*
+
+    The idea is to use the increment instruction targeting rI3 and using rI3 as
+    the index field.
+
+    #+BEGIN_SRC mixal
+    INC3 0,3
+    #+END_SRC
+
+13. [10] Suppose location 1000 contains the instruction ~JOV 1001~. This
+    instruction turns off the overflow toggle if it is on (and the next
+    instruction executed will be in location 1001, in any case). If this
+    instruction were changed to ~JNOV 1001~, would there be any difference? What
+    if it were changed to ~JOV 1000~ or ~JNOV 1000~?
+
+    *Answer*
+
+    ~JNOV 1001~ would set rJ to 1000 if the overflow toggle was not on.
+    ~JOV 1000~ has an extra jump if the overflow toggle was on. ~JNOV 1000~,
+    would however, got into an infinite loop if the overflow toggle was on.
+
+
+
+
+
+
 
 
 
