@@ -284,4 +284,12 @@
    c. ~(4:4)~
    d. ~(5:5)~
 
+4. [00] The last example of (5) is "~LDA -2000, 4~". How can this be legitimate,
+   in view of the fact that memory addresses should not be negative?
+
+   *Answer*
+
+   ~r4~, which is the index register referred to in this instruction, has a value
+   that is greater or equal to 2000.
+
 
