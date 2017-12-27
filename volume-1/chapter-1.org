@@ -254,5 +254,34 @@
     accuracy will we need to know the value of $x$ in order to determine the
     first three decimal places of the decimal expansion.
 
-    
+
+** MIX
+
+*** Description of Mix
+
+1. [00] If ~MIX~ were a ternary (base 3) computer, how many "trits" would there
+   be per byte?
+
+   *Answer*
+
+   $\lceil \sqrt[3]{64} \rceil = 4$.
+
+2. [02] If a value to be represented within ~MIX~ may get as large as 99999999,
+   how many adjacent bytes should be used to contain this quantity?
+
+   *Answer*
+
+   Five bytes are required.
+
+3. [02] Give the partial field specifications, ~(L:R)~, for the (a) address
+   field, (b) index field, (c) field field, and (d) operation code field of a
+   ~MIX~ instruction.
+
+   *Answer*
+
+   a. ~(0:2)~
+   b. ~(3:3)~
+   c. ~(4:4)~
+   d. ~(5:5)~
+
 
