@@ -292,4 +292,16 @@
    ~r4~, which is the index register referred to in this instruction, has a value
    that is greater or equal to 2000.
 
+5. [10] What symbolic notation, analogous to (4), corresponds to (6) if (6) is
+   regarded as a ~MIX~ instruction?
+
+   *Answer*
+
+   #+BEGIN_SRC mixal
+   DIV -80, 3
+   #+END_SRC
+
+6. 
+
+
 
