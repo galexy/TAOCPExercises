@@ -346,21 +346,21 @@
 
    rA is set to ~[+|0|617|0|1].
 
-9. [15] List all the ~MIX~ operators that can possibly affect the settings of
+9. [15] List all the =MIX= operators that can possibly affect the settings of
    the overflow toggle. (Do not include floating point operators.)
 
    *Answer*
 
    ~ADD~, ~SUB~, ~DIV~, ~INCA~, ~INCX~, ~DECA~, ~DECX~, ~JOV~, ~JNOV~, ~NUM~
 
-10. [15] List all the ~MIX~ operators that can possibly affect the setting of
+10. [15] List all the =MIX= operators that can possibly affect the setting of
     the comparison indicator.
 
     *Answer*
 
     ~CMPA~, ~CMPX~, ~CMP1~, ~CMP2~, ~CMP3~, ~CMP4~, ~CMP5~, ~CMP6~
 
-11. [15] List all the ~MIX~ operators that con possible affect the setting of
+11. [15] List all the =MIX= operators that con possible affect the setting of
     rI1.
 
     *Answer*
@@ -391,11 +391,20 @@
     ~JOV 1000~ has an extra jump if the overflow toggle was on. ~JNOV 1000~,
     would however, got into an infinite loop if the overflow toggle was on.
 
+14. [20] For each =MIX= operation, consider whether there is a way to set the
+    AA, I, and F portions so that the result of the instruction is precisely
+    equivalent to ~NOP~ (except that the execution time may be longer). Assume
+    that nothing is known about the contents of any registers or any memory
+    locations. Whenever it is possible to produce a ~NOP~, state how it can be
+    done.
 
+15. [10] How many /alphanumeric characters/ are there in a typewriter or
+    paper-tape block? in a card-reader or card-punch block? in a line-printer
+    block?
 
+    *Answer*
 
-
-
-
-
+    There are 70 alphanumeric characters in a typewriter or paper-tape block.
+    And, 80 in a card-reader or card-punch block, and 120 in a line-printer
+    block.
 
