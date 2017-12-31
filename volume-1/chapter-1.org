@@ -408,3 +408,16 @@
     And, 80 in a card-reader or card-punch block, and 120 in a line-printer
     block.
 
+16. [20] Write a program that sets memory cells 0000-0099 all to zero and is (a)
+    as short a program as possible; (b) as fast as program as possible.
+
+    #+BEGIN_SRC mixal
+    STZ 0
+    ENT1 1
+    MOVE 0,(64)
+    MOVE 0,(35)
+    #+END_SRC
+
+
+
+
