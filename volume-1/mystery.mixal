@@ -1,0 +1,22 @@
+* MYSTERY PROGRAM
+BUF ORIG *+3000
+1H  ENT1 1               rI1 = 1
+    ENT2 0               rI2 = 0
+    LDX  4F              rX  = |+|01|01|01|01|01|
+2H  ENT3 0,1             rI3 = 1
+3H  STZ  BUF,2           CONTENTS(3000) = |+|01|01|01|01|01|
+    INC2 1               rI2 = 1
+    DEC3 1               rI3 = 0
+    J3P  3B              Nothing
+    STX  BUF,2           CONTENTS(3001) = |+|01|01|01|01|01|
+    INC2 1               rI2 = 1
+    INC1 1               rI1 = 1
+    CMP1 =75=            Comp Indic. = GREATER
+    JL   2B              Nothing
+    ENN2 2400            rI2 = -2400
+    OUT  BUF+2400,2(18)  
+    INC2 24
+    J2N  *-2
+    HLT
+4H  ALF  AAAAA
+    END  1B

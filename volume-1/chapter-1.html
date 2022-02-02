@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-12-21 Thu 09:53 -->
+<!-- 2018-01-01 Mon 22:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -228,20 +228,20 @@ for the JavaScript code in this tag.
 </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
+        displayAlign: "left",
+        displayIndent: "5em",
 
         "HTML-CSS": { scale: 100,
                         linebreaks: { automatic: "false" },
-                        webFont: "TeX"
+                        webFont: "Neo-Euler"
                        },
         SVG: {scale: 100,
               linebreaks: { automatic: "false" },
-              font: "TeX"},
+              font: "Neo-Euler"},
         NativeMML: {scale: 100},
         TeX: { equationNumbers: {autoNumber: "AMS"},
                MultLineWidth: "85%",
-               TagSide: "right",
+               TagSide: "left",
                TagIndent: ".8em"
              }
 });
@@ -255,12 +255,20 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org614c15c">1. Basic Concepts</a>
+<li><a href="#org4b6fe60">1. Basic Concepts</a>
 <ul>
-<li><a href="#org848c1b8">1.1. Algorithms</a></li>
-<li><a href="#org053b95e">1.2. Mathematical Preliminaries</a>
+<li><a href="#orgee7a7d1">1.1. Algorithms</a></li>
+<li><a href="#org5ee73df">1.2. Mathematical Preliminaries</a>
 <ul>
-<li><a href="#org01ca008">1.2.1. Mathematical Induction</a></li>
+<li><a href="#org8c06291">1.2.1. Mathematical Induction</a></li>
+<li><a href="#orgc8631b4">1.2.2. Numbers, Powers and Logarithms</a></li>
+</ul>
+</li>
+<li><a href="#org7c3f7f4">1.3. MIX</a>
+<ul>
+<li><a href="#org0f36750">1.3.1. Description of Mix</a></li>
+<li><a href="#org7961328">Description of MMIX</a></li>
+<li><a href="#org77cc72b">1.3.2. The <code>MIX</code> Assembly Language</a></li>
 </ul>
 </li>
 </ul>
@@ -268,12 +276,14 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org614c15c" class="outline-2">
-<h2 id="org614c15c"><span class="section-number-2">1</span> Basic Concepts</h2>
+
+
+<div id="outline-container-org4b6fe60" class="outline-2">
+<h2 id="org4b6fe60"><span class="section-number-2">1</span> Basic Concepts</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org848c1b8" class="outline-3">
-<h3 id="org848c1b8"><span class="section-number-3">1.1</span> Algorithms</h3>
+<div id="outline-container-orgee7a7d1" class="outline-3">
+<h3 id="orgee7a7d1"><span class="section-number-3">1.1</span> Algorithms</h3>
 <div class="outline-text-3" id="text-1-1">
 <ol class="org-ol">
 <li><p>
@@ -340,7 +350,7 @@ variable is the divisor.
 </dl></li>
 
 <li><p>
-[/16/] What is the greatest common divisor of 2166 and 6099?
+[ <i>16</i> ] What is the greatest common divisor of 2166 and 6099?
 </p>
 
 <p>
@@ -409,19 +419,1153 @@ another version of \(T_{m}\). So, the average is \(1 + T_{m}\).
 </div>
 
 
-<div id="outline-container-org053b95e" class="outline-3">
-<h3 id="org053b95e"><span class="section-number-3">1.2</span> Mathematical Preliminaries</h3>
+<div id="outline-container-org5ee73df" class="outline-3">
+<h3 id="org5ee73df"><span class="section-number-3">1.2</span> Mathematical Preliminaries</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org01ca008" class="outline-4">
-<h4 id="org01ca008"><span class="section-number-4">1.2.1</span> Mathematical Induction</h4>
+<div id="outline-container-org8c06291" class="outline-4">
+<h4 id="org8c06291"><span class="section-number-4">1.2.1</span> Mathematical Induction</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ol class="org-ol">
+<li><p>
+[/05/] Explain how to modify the idea of proof by mathematical induction, in
+case we want to prove some statement \(P(n)\) for all <i>nonnegative</i> integers -
+that is, for $n = 0, 1, 2, &#x2026;$ instead of for $n = 1, 2, 3, &#x2026;$.
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<ol class="org-ol">
+<li>Give a proof of \(P(0)\) is true.</li>
+<li>Give a proof that if "if all of \(P(0)\), \(P(1)\), \(P(2)\),&#x2026;,\(P(n)\) are
+true, then \(P(n+1)\) is also true".</li>
+</ol></li>
+
+<li><p>
+[/15/] There must be something wrong with the following proof. What is it?
+"<b>Theorem.</b> Let \(a\) be any positive number. For all positive integers \(n\) we
+have \(a^{n-1} = 1\).
+</p>
+
+<p>
+<i>Proof.</i> If \(n = 1, a^{n-1} = a^{1-1} = a^{0} = 1\). And
+by induction, assuming that the theorem is true for 1, 2, &#x2026;, \(n\), we have
+</p>
+
+\begin{align*}
+  a^{(n+1)-1} 
+= a^{n} 
+= \dfrac{a^{n-1} \times a^{n-1}}{a^{(n-1)-1}} 
+= \dfrac{1 \times 1}{1}
+= 1;
+\end{align*}
+<p>
+so theorem is true for \(n+1\) as well.
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+The proof does not work for \(n=1\). It would cause a division by zero and is
+undefined.
+</p></li>
+
+<li><p>
+The follow proof by induction seems correct, but for some reason the equation
+for n = 6 gives \(\dfrac{1}{2} + \dfrac{1}{6} + \dfrac{1}{12} +
+   \dfrac{1}{20} + \dfrac{1}{30} = \dfrac{5}{6}\) on the left-hand side, and
+\(\dfrac{3}{2} - \dfrac{1}{6} = \dfrac{4}{3}\) on the right-hand side. Can you
+find the mistake? "<b>Theorem</b>.
+</p>
+
+\begin{align*}
+  \dfrac{1}{1 \times 2}
++ \dfrac{1}{2 \times 3}
++ \cdots
++ \dfrac{1}{(n-1) \times n}
+= \dfrac{3}{2} - \dfrac{1}{n}.
+\end{align*}
+
+<p>
+<i>Proof</i>. We use induction on n. For \(n = 1\), clearly \(3/2 - 1/n = 1/(1 \times
+   2);\) and, assuming that the theorem is true for n,
+</p>
+
+\begin{align*}
+& \dfrac{1}{1 \times 2}
++ \cdots
++ \dfrac{1}{(n-1) \times n}
++ \dfrac{1}{n \times (n + 1)} \\
+& = \dfrac{3}{2} - \dfrac{1}{n} + \dfrac{1}{n(n+1)}
+= \dfrac{3}{2} - \dfrac{1}{n} + (\dfrac{1}{n} - \dfrac{1}{n+1})
+= \dfrac{2}{2} - \dfrac{1}{n+1}.
+\end{align*}
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+\(\dfrac{1}{(n-1) \times n}\) is not defined for \(n = 1\).
+</p></li>
+
+<li><p>
+Prove that, in addition to Eq. (3), Fibonacci numbers satisfy \(F_{n} \geq
+   \phi^{n-2}\).
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+\begin{align*}
+  F_{n+1} = F_{n-1} + F_{n} \geq \phi^{n-3} + \phi^{n-2}
+= \phi^{n-3}(1 + \phi) = \phi^{n-3} \phi^2 = \phi^{n-1}
+\end{align*}</li>
+
+<li><p>
+A <i>prime number</i> is an integer &gt; 1 that has no exact divisors other than 1
+and itself. Using this definition and mathematical induction, prove that
+every integer &gt; 1 may be written a product of one or more prime numbers. (A
+prime number is considered to be the "product" of a single prime, namely
+itself.)
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+If \(n\) is a prime, then the statement is true. If \(n\) is not prime. It has
+some divisors, both of which are less than \(n\). By, induction, those divisors
+can be written as a product of primes.
+</p></li>
+
+<li>Prove that Eqs. (6) hold just before step E4, they hold afterwards also.</li>
+
+<li>Formulate and prove by induction a rule for the sums \(1^{2}\), \(2^{2}-1^{2}\),
+\(3^{2}-2^{2}+1^{2}\), \(4^{2}-3^{2}+2^{2}-1^{2}\),
+\(5^{2}-4^{2}+3^{2}-2^{2}+1^{2}\), etc.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgc8631b4" class="outline-4">
+<h4 id="orgc8631b4"><span class="section-number-4">1.2.2</span> Numbers, Powers and Logarithms</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<ol class="org-ol">
+<li><p>
+[00] What is the smallest positive rational number?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+There is none.
+</p></li>
+
+<li><p>
+[00] Is 1 + 0.239999999&#x2026; a decimal expansion?
+</p>
+
+<p>
+Yes.
+</p></li>
+
+<li><p>
+[02] What is \((-3)^{-3}\)?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+\(\dfrac{1}{(-3)^{3}} = -\dfrac{1}{27}\)
+</p></li>
+
+<li><p>
+[05] what is \((0.125)^{-2/3}\)?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+\(8^{2/3} = \sqrt[3]{64} = 4\)
+</p></li>
+
+<li><p>
+[05] We defined real numbers in terms of decimal expansion. Discuss how we
+could have defined them in terms of a binary expansion instead, and give a
+definition to replace Eq. (2).
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+\(x = n + 0.b_{1}b_{2}b{3}\cdots\)
+</p>
+
+\begin{align*}
+  n + \dfrac{b_{1}}{2} + \dfrac{b_{2}}{4} + \dfrac{b_{3}}{8} + \cdots + \dfrac{b_{k}}{2^{k}}
+\le x
+\lt n + \dfrac{b_{1}}{2} + \dfrac{b_{2}}{4} + \dfrac{b_{3}}{8} + \cdots + \dfrac{b_{k}}{2^{k}} + \dfrac{1}{2^{k+1}}
+\end{align*}</li>
+
+<li><p>
+[10] Let \(x = m + 0.d_{1}d_{2}\dots\) and \(y = n + 0.e_{1}e_{2}\dots\) be real
+numbers. Give a rule for determining whether \(x = y\), \(x < y\), or \(x > y\), based on
+decimal representation.
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+If \(m > n\) then \(x > y\) or if \(m < n\) then \(x < y\). Otherwise, if there
+exists a \(k\) such that \(d_{k} > e_{k}\) then \(m > n\). Or, if there exists a
+\(k\) such at \(d_{k} < e_{k}\), then \(m < n\), otherwise \(m = n\).
+</p></li>
+
+<li><p>
+[M23] Given that \(x\) and \(y\) are integers, prove the laws of exponents,
+starting from the definition given by Eq. (4).
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+Prove inductively on \(y\). If \(y = 1\), then \(b^{x+1} = b^{x}b\). Assuming
+\(b^{x+n} = b^{x}b^{n}\), then \(b^{x+n+1} = b^{x+n}b = b^{x}b^{n}b = b^{x}b^{n+1}\)
+</p></li>
+
+<li>[25] Let \(m\) be a positive integer. <i>Prove</i> that every positive real number
+\(u\) has a unique $m$th root, by giving a method to construct successively the
+values \(n\), \(d_1\), \(d_2\), &#x2026; in the decimal expansion of the root.</li>
+
+<li>[M23] GGive that \(x\) and \(y\) are rational, prove the laws of exponents under
+the assumption that the laws hold when \(x\) and \(y\) are integers.</li>
+
+<li><p>
+[18] Prove that \(log_{10}2\) is not a rational number.
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+\(log_{10}2 = \dfrac{log_{2}2}{log_{2}10} = \dfrac{1}{log_{2}10}\)
+</p>
+
+<p>
+The demonstrator is not an integer, therefore not a rational number.
+</p></li>
+
+<li>[10] If \(b = 10\) and \(x \approx log_{10}2\), to how many decimal places of
+accuracy will we need to know the value of \(x\) in order to determine the
+first three decimal places of the decimal expansion.</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org7c3f7f4" class="outline-3">
+<h3 id="org7c3f7f4"><span class="section-number-3">1.3</span> MIX</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-org0f36750" class="outline-4">
+<h4 id="org0f36750"><span class="section-number-4">1.3.1</span> Description of Mix</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<ol class="org-ol">
+<li><p>
+[00] If <code>MIX</code> were a ternary (base 3) computer, how many "trits" would there
+be per byte?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+\(\lceil \sqrt[3]{64} \rceil = 4\).
+</p></li>
+
+<li><p>
+[02] If a value to be represented within <code>MIX</code> may get as large as 99999999,
+how many adjacent bytes should be used to contain this quantity?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+Five bytes are required.
+</p></li>
+
+<li><p>
+[02] Give the partial field specifications, <code>(L:R)</code>, for the (a) address
+field, (b) index field, (c) field field, and (d) operation code field of a
+<code>MIX</code> instruction.
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+a. <code>(0:2)</code>
+b. <code>(3:3)</code>
+c. <code>(4:4)</code>
+d. <code>(5:5)</code>
+</p></li>
+
+<li><p>
+[00] The last example of (5) is "<code>LDA -2000, 4</code>". How can this be legitimate,
+in view of the fact that memory addresses should not be negative?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+<code>r4</code>, which is the index register referred to in this instruction, has a value
+that is greater or equal to 2000.
+</p></li>
+
+<li><p>
+[10] What symbolic notation, analogous to (4), corresponds to (6) if (6) is
+regarded as a <code>MIX</code> instruction?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-mixal"><span style="color: #7590db;">DIV</span> -80, <span style="color: #a45bad;">3</span>
+</pre>
+</div></li>
+
+<li><p>
+[10] Assume that location 3000 contains
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">+</td>
+<td class="org-right">5</td>
+<td class="org-right">1</td>
+<td class="org-right">200</td>
+<td class="org-right">15</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+What is the result of the following instructions? (a) <code>LDAN 3000</code>
+(b) <code>LD2N 3000(3:4)</code> (c) <code>LDX 3000(1:3)</code> (d) <code>LD6 3000</code> (e) LDXN 3000(0:0).
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+(a) rA is set to 
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">-</td>
+<td class="org-right">5</td>
+<td class="org-right">1</td>
+<td class="org-right">200</td>
+<td class="org-right">15</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+(b) r2 = -200
+</p>
+
+<p>
+(c) rX is set to
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">+</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">5</td>
+<td class="org-right">1</td>
+<td class="org-left">?</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+(d) undefined
+</p>
+
+<p>
+(e) rX is set to
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">-</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+</tbody>
+</table></li>
+
+<li>[M15] Give a precise definition of the results of the <code>DIV</code> instruction for
+all cases in which overflow does not occur, using the algebraic operations 
+\(X \bmod Y\) and \(\lfloor X / Y \rfloor\).</li>
+
+<li><p>
+[15] The last example of the <code>DIV</code> instruction that appears on page 133 has
+"rX before" equal to <code>[+|1235|0|3|1]</code>. If this were <code>[-|1234|0|3|1]</code> instead,
+but other parts of that example were unchanged, what would registers A and X
+contain after the <code>DIV</code> instruction?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+rA is set to ~[+|0|617|0|1].
+</p></li>
+
+<li><p>
+[15] List all the <code>MIX</code> operators that can possibly affect the settings of
+the overflow toggle. (Do not include floating point operators.)
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+<code>ADD</code>, <code>SUB</code>, <code>DIV</code>, <code>INCA</code>, <code>INCX</code>, <code>DECA</code>, <code>DECX</code>, <code>JOV</code>, <code>JNOV</code>, <code>NUM</code>
+</p></li>
+
+<li><p>
+[15] List all the <code>MIX</code> operators that can possibly affect the setting of
+the comparison indicator.
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+<code>CMPA</code>, <code>CMPX</code>, <code>CMP1</code>, <code>CMP2</code>, <code>CMP3</code>, <code>CMP4</code>, <code>CMP5</code>, <code>CMP6</code>
+</p></li>
+
+<li><p>
+[15] List all the <code>MIX</code> operators that con possible affect the setting of
+rI1.
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+<code>LD1</code>, <code>LDN1</code>, <code>ENT1</code>, <code>ENN1</code>, <code>INC1</code>, <code>DEC1</code>, <code>MOVE</code>
+</p></li>
+
+<li><p>
+[10] Find a single instruction that has the effect of multiplying the
+current contents of rI3 by two and leaving the result in rI3.
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+The idea is to use the increment instruction targeting rI3 and using rI3 as
+the index field.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-mixal"><span style="color: #7590db;">INC3</span> <span style="color: #a45bad;">0</span>,<span style="color: #a45bad;">3</span>
+</pre>
+</div></li>
+
+<li><p>
+[10] Suppose location 1000 contains the instruction <code>JOV 1001</code>. This
+instruction turns off the overflow toggle if it is on (and the next
+instruction executed will be in location 1001, in any case). If this
+instruction were changed to <code>JNOV 1001</code>, would there be any difference? What
+if it were changed to <code>JOV 1000</code> or <code>JNOV 1000</code>?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+<code>JNOV 1001</code> would set rJ to 1000 if the overflow toggle was not on.
+<code>JOV 1000</code> has an extra jump if the overflow toggle was on. <code>JNOV 1000</code>,
+would however, got into an infinite loop if the overflow toggle was on.
+</p></li>
+
+<li>[20] For each <code>MIX</code> operation, consider whether there is a way to set the
+AA, I, and F portions so that the result of the instruction is precisely
+equivalent to <code>NOP</code> (except that the execution time may be longer). Assume
+that nothing is known about the contents of any registers or any memory
+locations. Whenever it is possible to produce a <code>NOP</code>, state how it can be
+done.</li>
+
+<li><p>
+[10] How many <i>alphanumeric characters</i> are there in a typewriter or
+paper-tape block? in a card-reader or card-punch block? in a line-printer
+block?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+There are 70 alphanumeric characters in a typewriter or paper-tape block.
+And, 80 in a card-reader or card-punch block, and 120 in a line-printer
+block.
+</p></li>
+
+<li><p>
+[20] Write a program that sets memory cells 0000-0099 all to zero and is (a)
+as short a program as possible; (b) as fast as program as possible.
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-mixal"><span style="color: #7590db;">STZ</span> <span style="color: #a45bad;">0</span>
+<span style="color: #7590db;">ENT1</span> <span style="color: #a45bad;">1</span>
+<span style="color: #7590db;">MOVE</span> <span style="color: #a45bad;">0</span>,<span style="color: #4f97d7;">(</span><span style="color: #a45bad;">63</span><span style="color: #4f97d7;">)</span>
+<span style="color: #7590db;">MOVE</span> <span style="color: #a45bad;">0</span>,<span style="color: #4f97d7;">(</span><span style="color: #a45bad;">36</span><span style="color: #4f97d7;">)</span>
+</pre>
+</div></li>
+
+<li><p>
+[26] This is the same as the previous exercise, except that locations 0000
+through \(N\), inclusive, are to be set to zero, where \(N\) is the current
+contents of rI2. Your programs (a) and (b) should work for any value \(0 \leq
+    N \leq 2999\); they should start in location 3000.
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-mixal"><span style="color: #7590db;">STZ</span> <span style="color: #a45bad;">0</span>
+<span style="color: #7590db;">JMP</span> <span style="color: #a45bad;">3004</span>
+<span style="color: #7590db;">MOVE</span> <span style="color: #a45bad;">0</span>,<span style="color: #4f97d7;">(</span><span style="color: #a45bad;">63</span><span style="color: #4f97d7;">)</span>
+<span style="color: #7590db;">DEC2</span> <span style="color: #a45bad;">63</span>
+<span style="color: #7590db;">J2NN</span> <span style="color: #a45bad;">3003</span>
+<span style="color: #7590db;">INC2</span> <span style="color: #a45bad;">63</span>
+<span style="color: #7590db;">STZ</span> <span style="color: #a45bad;">0</span>,<span style="color: #a45bad;">2</span>
+<span style="color: #7590db;">DEC2</span> <span style="color: #a45bad;">1</span>
+<span style="color: #7590db;">J2NN</span> <span style="color: #a45bad;">3007</span>
+</pre>
+</div></li>
+
+<li><p>
+[22] After the following "number one" program has been executed, what
+changes to registers, toggles, and memory have taken place?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-mixal"><span style="color: #7590db;">STZ</span>  <span style="color: #a45bad;">1</span>           Memory<span style="color: #2aa1ae; background-color: #292e34;"> location 1 = 0</span>
+<span style="color: #7590db;">ENNX</span> <span style="color: #a45bad;">1</span>           rX <span style="color: #2aa1ae; background-color: #292e34;"> = ~|-|0|0|0|0|1|~</span>
+<span style="color: #7590db;">STX</span>  <span style="color: #a45bad;">1</span><span style="color: #4f97d7;">(</span><span style="color: #a45bad;">0</span>:<span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span>      Memory location <span style="color: #a45bad;">1</span> = -0
+<span style="color: #7590db;">SLAX</span> <span style="color: #a45bad;">1</span>           rX <span style="color: #2aa1ae; background-color: #292e34;"> = ~|-|0|0|0|1|0|~</span>
+<span style="color: #7590db;">ENNA</span> <span style="color: #a45bad;">1</span>           rA <span style="color: #2aa1ae; background-color: #292e34;"> = ~|-|0|0|0|0|1|~</span>
+<span style="color: #7590db;">INCX</span> <span style="color: #a45bad;">1</span>           rX <span style="color: #2aa1ae; background-color: #292e34;"> = ~|-|0|0|0|0|?|~</span>
+<span style="color: #7590db;">ENT1</span> <span style="color: #a45bad;">1</span>           ri1<span style="color: #2aa1ae; background-color: #292e34;"> = ~|+|0|1|~</span>
+<span style="color: #7590db;">SRC</span>  <span style="color: #a45bad;">1</span>           rA <span style="color: #2aa1ae; background-color: #292e34;"> = ~|-|0|0|0|0|0|~    rX  = ~|-|1|0|0|0|0|~</span>
+<span style="color: #7590db;">ADD</span>  <span style="color: #a45bad;">1</span>           rA <span style="color: #2aa1ae; background-color: #292e34;"> = ~|+|0|0|0|0|1|~</span>
+<span style="color: #7590db;">DEC1</span> -1          ri1 = ~|+|0|2|~
+<span style="color: #7590db;">STZ</span>  <span style="color: #a45bad;">1</span>           Memory<span style="color: #2aa1ae; background-color: #292e34;"> location 1 = 0</span>
+<span style="color: #7590db;">CMPA</span> <span style="color: #a45bad;">1</span>           Comp.<span style="color: #2aa1ae; background-color: #292e34;"> Indc. = GREATER</span>
+<span style="color: #7590db;">MOVE</span> -1,<span style="color: #a45bad;">1</span><span style="color: #4f97d7;">(</span><span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span>     ri1 = ~|+|0|3|~
+<span style="color: #7590db;">NUM</span>  <span style="color: #a45bad;">1</span>           rA <span style="color: #2aa1ae; background-color: #292e34;"> = ~|+|110000|</span>
+<span style="color: #7590db;">CHAR</span> <span style="color: #a45bad;">1</span>           rA <span style="color: #2aa1ae; background-color: #292e34;"> = ~|-|30|30|30|30|31|~    rX  = ~|-|31|30|30|30|30|~</span>
+<span style="color: #7590db;">HLT</span>  <span style="color: #a45bad;">1</span>
+</pre>
+</div>
+
+<p>
+rA  = <code>|-|30|30|30|30|31|</code>
+rX  = <code>|-|31|30|30|30|30|</code>
+ri1 = <code>|+|0|3|</code>
+Comp Indic. = GREATER
+CONTENTS(1) = 0
+</p></li>
+
+<li><p>
+[14] What is the execution time of the program in the preceding exercise,
+not counting the <code>HTL</code> instruction?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+(2 + 1 + 2 + 2 + 1 + 1 + 1 + 2 + 2 + 1 + 2 + 2 + 3, 10, + 10)u = 42u
+</p></li>
+
+<li><p>
+[20] Write a program that sets all 4000 memory cells to a <code>HLT</code> instruction,
+and then stops.
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-mixal"><span style="color: #7590db;">ENT1</span> <span style="color: #a45bad;">0</span>
+<span style="color: #7590db;">MOVE</span> <span style="color: #a45bad;">3999</span>,<span style="color: #a45bad;">0</span><span style="color: #4f97d7;">(</span><span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span>
+<span style="color: #7590db;">MOVE</span> <span style="color: #a45bad;">0</span>,<span style="color: #a45bad;">0</span><span style="color: #4f97d7;">(</span><span style="color: #a45bad;">43</span><span style="color: #4f97d7;">)</span>
+<span style="color: #7590db;">JMP</span>  <span style="color: #a45bad;">3997</span>
+<span style="color: #7590db;">HLT</span>  <span style="color: #a45bad;">0</span>
+</pre>
+</div></li>
+
+<li><p>
+[24] (a) Can the J-register ever be zero? (b) Write a program that, given a
+number \(N\) in rI4, sets register J equal to N, assuming that \(0 \lt N \leq
+    3000\). Your program should start at location 3000. When your program has
+finished its execution, the contents of all memory cells must be unchanged.
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-mixal"><span style="color: #7590db;">ENT1</span> <span style="color: #a45bad;">3000</span>
+<span style="color: #7590db;">MOVE</span> <span style="color: #a45bad;">0</span>,<span style="color: #a45bad;">4</span><span style="color: #4f97d7;">(</span><span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span>
+<span style="color: #7590db;">ENTA</span> <span style="color: #a45bad;">39</span>
+<span style="color: #7590db;">STA</span>  <span style="color: #a45bad;">0</span>,<span style="color: #a45bad;">4</span>
+<span style="color: #7590db;">ENTA</span> <span style="color: #a45bad;">3010</span> #fix
+<span style="color: #7590db;">STA</span>  <span style="color: #a45bad;">0</span>,<span style="color: #a45bad;">4</span><span style="color: #4f97d7;">(</span><span style="color: #a45bad;">1</span>:<span style="color: #a45bad;">2</span><span style="color: #4f97d7;">)</span>
+<span style="color: #7590db;">JMP</span>  <span style="color: #a45bad;">0</span>,<span style="color: #a45bad;">4</span>
+<span style="color: #7590db;">ENT1</span> <span style="color: #a45bad;">0</span>,<span style="color: #a45bad;">4</span>
+<span style="color: #7590db;">MOVE</span> <span style="color: #a45bad;">3000</span>,<span style="color: #a45bad;">0</span><span style="color: #4f97d7;">(</span><span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span>
+<span style="color: #7590db;">ENTA</span> <span style="color: #a45bad;">49</span>
+<span style="color: #7590db;">STA</span>  <span style="color: #a45bad;">3000</span>,<span style="color: #a45bad;">0</span>
+<span style="color: #7590db;">ENTA</span> <span style="color: #a45bad;">3000</span>
+<span style="color: #7590db;">STA</span>  <span style="color: #a45bad;">3000</span>,<span style="color: #a45bad;">0</span><span style="color: #4f97d7;">(</span><span style="color: #a45bad;">1</span>:<span style="color: #a45bad;">2</span><span style="color: #4f97d7;">)</span>
+<span style="color: #7590db;">HLT</span>
+</pre>
+</div></li>
+
+<li>[28] Location 2000 contains an integer number, \(X\). Write two programs that
+compute \(X^{13}\) and halt with the result in register A. One program should
+use the minimum number of <code>MIX</code> memory locations; the other should require
+the minimum execution time possible. Assume that \(X^{13}\) fits into a single
+word.</li>
+
+<li>[27] Location 0200 contains a word <code>|+|a|b|c|d|e|</code>: write two programs that
+compute the "reflected" word <code>|+|e|d|c|b|a|</code> and halt with the result in
+register A. One program should do this without using <code>MIX</code>'s ability to load
+and store partial fields of words. Both programs should take the minimum
+possible number of memory locations under the state conditions (including
+all locations used for the program and for temporary storage of intermediate
+results).</li>
+
+<li>[21] Assuming that registers A and X contain <code>|+|0|a|b|c|d|</code> and
+<code>|+|e|f||g|h|i|</code>, respectively, write two programs that change the contents
+of the registers to <code>|+|a|b|c|d|e|</code> and <code>|+|0|f|g|h|i|</code>.</li>
+
+<li>[30] Suppose that the manufacturer of <code>MIX</code> wishes to come out with a more
+powerful computer ("Mixmaster"?), and he wants to convince as many as
+possible of those people now owning a <code>MIX</code> computer to invest in the more
+expensive machine. He wants to design this new hardware to be an extension
+of <code>MIX</code>, in the sense that all programs correctly written for <code>MIX</code> will
+work on the new machine without change. Suggest desirable things that could
+be incorporated in this extension. (For example, can you make better use of
+the I-field of an instruction?)</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org7961328" class="outline-4">
+<h4 id="org7961328">Description of MMIX</h4>
+<div class="outline-text-4" id="text-org7961328">
+</div>
+</div>
+
+<div id="outline-container-org77cc72b" class="outline-4">
+<h4 id="org77cc72b"><span class="section-number-4">1.3.2</span> The <code>MIX</code> Assembly Language</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<ol class="org-ol">
+<li><p>
+[00] The text remarked that "<code>X EQU 1000</code>" does not assemble any instructions
+that sets the value of a variable. Suppose that you are writing a <code>MIX</code>
+program in which you wish to set the value contained in a certain memory cell
+(whose symbolic name is X) equal to 1000. How could you write this in <code>MIXAL</code>?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-mixal"><span style="color: #7590db;">ENTA</span> <span style="color: #a45bad;">1000</span>
+<span style="color: #7590db;">STA</span>  X
+</pre>
+</div></li>
+
+<li><p>
+[10] Line 12 of Program M says "<code>JMP *</code>", where * denotes the location of
+that line. Why doesn't the program go into an infinite loop, endlessly
+repeating this instruction?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+Because the address fields are overwrite with the J register on entry into
+the subroutine.
+</p></li>
+
+<li><p>
+[23] What is the effect of the following program, if it is used in
+conjunction with Program M?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-mixal"><span style="color: #7590db;">START</span> <span style="color: #4f97d7; font-weight: bold;">IN</span>   X+1<span style="color: #4f97d7;">(</span><span style="color: #a45bad;">0</span><span style="color: #4f97d7;">)</span>
+      <span style="color: #4f97d7; font-weight: bold;">JBUS</span> *<span style="color: #4f97d7;">(</span><span style="color: #a45bad;">0</span><span style="color: #4f97d7;">)</span>
+      <span style="color: #4f97d7; font-weight: bold;">ENT1</span> <span style="color: #a45bad;">100</span>
+<span style="color: #a45bad;">1H</span>    <span style="color: #4f97d7; font-weight: bold;">JMP</span>  MAXIMUM
+      <span style="color: #4f97d7; font-weight: bold;">LDX</span>  X,<span style="color: #a45bad;">1</span>
+      <span style="color: #4f97d7; font-weight: bold;">STA</span>  X,<span style="color: #a45bad;">1</span>
+      <span style="color: #4f97d7; font-weight: bold;">STX</span>  X,<span style="color: #a45bad;">2</span>
+      <span style="color: #4f97d7; font-weight: bold;">DEC1</span> <span style="color: #a45bad;">1</span>
+      <span style="color: #4f97d7; font-weight: bold;">J1P</span>  <span style="color: #a45bad;">1B</span>
+      <span style="color: #4f97d7; font-weight: bold;">OUT</span>  X+1<span style="color: #4f97d7;">(</span><span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span>
+      <span style="color: #4f97d7; font-weight: bold;">HLT</span>
+      <span style="color: #4f97d7;">END</span>  START
+</pre>
+</div>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+Reads 100 five byte numbers from tape unit 0 and writes the numbers in sorted
+order to tape unit 1.
+</p></li>
+
+<li><p>
+[25] Assemble Program P by hand. (It won't take as long as you think.) What
+are the actual numerical contents of memory, corresponding to that symbolic
+program?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">+AA</th>
+<th scope="col" class="org-right">I</th>
+<th scope="col" class="org-right">F</th>
+<th scope="col" class="org-right">C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">0000</td>
+<td class="org-right">0</td>
+<td class="org-right">18</td>
+<td class="org-right">35</td>
+</tr>
+
+<tr>
+<td class="org-right">2051</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">9</td>
+</tr>
+
+<tr>
+<td class="org-right">2050</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">10</td>
+</tr>
+
+<tr>
+<td class="org-right">0001</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">49</td>
+</tr>
+
+<tr>
+<td class="org-right">0499</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">26</td>
+</tr>
+
+<tr>
+<td class="org-right">3016</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">41</td>
+</tr>
+
+<tr>
+<td class="org-right">0002</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">50</td>
+</tr>
+
+<tr>
+<td class="org-right">0002</td>
+<td class="org-right">0</td>
+<td class="org-right">2</td>
+<td class="org-right">51</td>
+</tr>
+
+<tr>
+<td class="org-right">0000</td>
+<td class="org-right">0</td>
+<td class="org-right">2</td>
+<td class="org-right">48</td>
+</tr>
+
+<tr>
+<td class="org-right">0000</td>
+<td class="org-right">2</td>
+<td class="org-right">2</td>
+<td class="org-right">55</td>
+</tr>
+
+<tr>
+<td class="org-right">-0001</td>
+<td class="org-right">3</td>
+<td class="org-right">5</td>
+<td class="org-right">12</td>
+</tr>
+
+<tr>
+<td class="org-right">3006</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">47</td>
+</tr>
+
+<tr>
+<td class="org-right">-0001</td>
+<td class="org-right">3</td>
+<td class="org-right">5</td>
+<td class="org-right">56</td>
+</tr>
+
+<tr>
+<td class="org-right">0001</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">51</td>
+</tr>
+
+<tr>
+<td class="org-right">3008</td>
+<td class="org-right">0</td>
+<td class="org-right">6</td>
+<td class="org-right">39</td>
+</tr>
+
+<tr>
+<td class="org-right">3003</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">39</td>
+</tr>
+
+<tr>
+<td class="org-right">1995</td>
+<td class="org-right">0</td>
+<td class="org-right">18</td>
+<td class="org-right">37</td>
+</tr>
+
+<tr>
+<td class="org-right">2035</td>
+<td class="org-right">0</td>
+<td class="org-right">2</td>
+<td class="org-right">52</td>
+</tr>
+
+<tr>
+<td class="org-right">-0050</td>
+<td class="org-right">0</td>
+<td class="org-right">2</td>
+<td class="org-right">53</td>
+</tr>
+
+<tr>
+<td class="org-right">0501</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">53</td>
+</tr>
+
+<tr>
+<td class="org-right">-0001</td>
+<td class="org-right">5</td>
+<td class="org-right">5</td>
+<td class="org-right">8</td>
+</tr>
+
+<tr>
+<td class="org-right">0000</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">5</td>
+</tr>
+
+<tr>
+<td class="org-right">0000</td>
+<td class="org-right">4</td>
+<td class="org-right">12</td>
+<td class="org-right">31</td>
+</tr>
+
+<tr>
+<td class="org-right">0001</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">52</td>
+</tr>
+
+<tr>
+<td class="org-right">0050</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">53</td>
+</tr>
+
+<tr>
+<td class="org-right">3020</td>
+<td class="org-right">0</td>
+<td class="org-right">2</td>
+<td class="org-right">45</td>
+</tr>
+
+<tr>
+<td class="org-right">0000</td>
+<td class="org-right">4</td>
+<td class="org-right">18</td>
+<td class="org-right">37</td>
+</tr>
+
+<tr>
+<td class="org-right">0024</td>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+<td class="org-right">12</td>
+</tr>
+
+<tr>
+<td class="org-right">3019</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">45</td>
+</tr>
+
+<tr>
+<td class="org-right">0000</td>
+<td class="org-right">0</td>
+<td class="org-right">2</td>
+<td class="org-right">5</td>
+</tr>
+</tbody>
+</table></li>
+
+<li><p>
+[11] Why doesn't Program P need a JBUS instruction to determine when the line
+printer is ready?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+Because it will block is the line printer is busy.
+</p></li>
+
+<li>[HM20] (a) Show that if \(n\) is not a prime, \(n\) has a divisor \(d\) with \(1 \lt
+   d \le \sqrt{n}\). (b) Use this fact to show that the test in step P7 of
+Algorithm P prove that <code>N</code> is prime.</li>
+
+<li><p>
+[10] (a) What is the meaning of "<code>4B</code>" in line 34 of Program P? (B) What
+effect, if any, would be caused if the location of line 15 were changed to
+"<code>2H</code>" and the address of line 20 were changed to "<code>2B</code>"?
+</p>
+
+<p>
+<b>Answer</b>
+</p>
+
+<p>
+(a) It refers to the address of the instruction in line 29. (b) The program
+would not stop after finding the 500th prime.
+</p></li>
+
+<li><p>
+[24] What does the following program do?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-mixal"><span style="color: #2aa1ae; background-color: #292e34;">* </span><span style="color: #2aa1ae; background-color: #292e34;">MYSTERY PROGRAM</span>
+<span style="color: #7590db;">BUF</span> <span style="color: #4f97d7;">ORIG</span> *+3000
+<span style="color: #a45bad;">1H</span>  <span style="color: #4f97d7; font-weight: bold;">ENT1</span> <span style="color: #a45bad;">1</span>              <span style="color: #2aa1ae; background-color: #292e34;"> rI1 = 1</span>
+    <span style="color: #4f97d7; font-weight: bold;">ENT2</span> <span style="color: #a45bad;">0</span>              <span style="color: #2aa1ae; background-color: #292e34;"> rI2 = 0</span>
+    <span style="color: #4f97d7; font-weight: bold;">LDX</span>  <span style="color: #a45bad;">4F</span>             <span style="color: #2aa1ae; background-color: #292e34;"> rX  = |+|01|01|01|01|01|</span>
+<span style="color: #a45bad;">2H</span>  <span style="color: #4f97d7; font-weight: bold;">ENT3</span> <span style="color: #a45bad;">0</span>,<span style="color: #a45bad;">1</span>            <span style="color: #2aa1ae; background-color: #292e34;"> rI3 = 1</span>
+<span style="color: #a45bad;">3H</span>  <span style="color: #4f97d7; font-weight: bold;">STZ</span>  BUF,<span style="color: #a45bad;">2</span>          <span style="color: #2aa1ae; background-color: #292e34;"> CONTENTS(3000) = |+|01|01|01|01|01|</span>
+    <span style="color: #4f97d7; font-weight: bold;">INC2</span> <span style="color: #a45bad;">1</span>              <span style="color: #2aa1ae; background-color: #292e34;"> rI2 = 1</span>
+    <span style="color: #4f97d7; font-weight: bold;">DEC3</span> <span style="color: #a45bad;">1</span>              <span style="color: #2aa1ae; background-color: #292e34;"> rI3 = 0</span>
+    <span style="color: #4f97d7; font-weight: bold;">J3P</span>  <span style="color: #a45bad;">3B</span>             <span style="color: #2aa1ae; background-color: #292e34;"> Nothing</span>
+    <span style="color: #4f97d7; font-weight: bold;">STX</span>  BUF,<span style="color: #a45bad;">2</span>          <span style="color: #2aa1ae; background-color: #292e34;"> CONTENTS(3001) = |+|01|01|01|01|01|</span>
+    <span style="color: #4f97d7; font-weight: bold;">INC2</span> <span style="color: #a45bad;">1</span>              <span style="color: #2aa1ae; background-color: #292e34;"> rI2 = 1</span>
+    <span style="color: #4f97d7; font-weight: bold;">INC1</span> <span style="color: #a45bad;">1</span>              <span style="color: #2aa1ae; background-color: #292e34;"> rI1 = 1</span>
+    <span style="color: #4f97d7; font-weight: bold;">CMP1</span> =75=           <span style="color: #2aa1ae; background-color: #292e34;"> Comp Indic. = GREATER</span>
+    <span style="color: #4f97d7; font-weight: bold;">JL</span>   <span style="color: #a45bad;">2B</span>             <span style="color: #2aa1ae; background-color: #292e34;"> Nothing</span>
+    <span style="color: #4f97d7; font-weight: bold;">ENN2</span> <span style="color: #a45bad;">2400</span>           <span style="color: #2aa1ae; background-color: #292e34;"> rI2 = -2400</span>
+    <span style="color: #4f97d7; font-weight: bold;">OUT</span>  BUF+2400,<span style="color: #a45bad;">2</span><span style="color: #4f97d7;">(</span><span style="color: #a45bad;">18</span><span style="color: #4f97d7;">)</span>  
+    <span style="color: #4f97d7; font-weight: bold;">INC2</span> <span style="color: #a45bad;">24</span>
+    <span style="color: #4f97d7; font-weight: bold;">J2N</span>  *-2
+    <span style="color: #4f97d7; font-weight: bold;">HLT</span>
+<span style="color: #a45bad;">4H</span>  <span style="color: #4f97d7;">ALF</span>  AAAAA
+    <span style="color: #4f97d7;">END</span>  <span style="color: #a45bad;">1B</span>
+</pre>
+</div></li>
+</ol>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Galex Yen</p>
-<p class="date">Created: 2017-12-21 Thu 09:53</p>
+<p class="date">Created: 2018-01-01 Mon 22:01</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

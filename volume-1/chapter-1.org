@@ -411,6 +411,8 @@
 16. [20] Write a program that sets memory cells 0000-0099 all to zero and is (a)
     as short a program as possible; (b) as fast as program as possible.
 
+    *Answer*
+
     #+BEGIN_SRC mixal
     STZ 0
     ENT1 1
@@ -508,6 +510,40 @@
     STA  3000,0(1:2)
     HLT
     #+END_SRC
+
+22. [28] Location 2000 contains an integer number, $X$. Write two programs that
+    compute $X^{13}$ and halt with the result in register A. One program should
+    use the minimum number of ~MIX~ memory locations; the other should require
+    the minimum execution time possible. Assume that $X^{13}$ fits into a single
+    word.
+
+23. [27] Location 0200 contains a word ~|+|a|b|c|d|e|~: write two programs that
+    compute the "reflected" word ~|+|e|d|c|b|a|~ and halt with the result in
+    register A. One program should do this without using ~MIX~'s ability to load
+    and store partial fields of words. Both programs should take the minimum
+    possible number of memory locations under the state conditions (including
+    all locations used for the program and for temporary storage of intermediate
+    results).
+
+24. [21] Assuming that registers A and X contain ~|+|0|a|b|c|d|~ and
+    ~|+|e|f||g|h|i|~, respectively, write two programs that change the contents
+    of the registers to ~|+|a|b|c|d|e|~ and ~|+|0|f|g|h|i|~.
+
+25. [30] Suppose that the manufacturer of ~MIX~ wishes to come out with a more
+    powerful computer ("Mixmaster"?), and he wants to convince as many as
+    possible of those people now owning a ~MIX~ computer to invest in the more
+    expensive machine. He wants to design this new hardware to be an extension
+    of ~MIX~, in the sense that all programs correctly written for ~MIX~ will
+    work on the new machine without change. Suggest desirable things that could
+    be incorporated in this extension. (For example, can you make better use of
+    the I-field of an instruction?)
+
+*** Description of MMIX
+:PROPERTIES:
+:UNNUMBERED: t
+:END:
+
+1. 
 
 *** The ~MIX~ Assembly Language
 1. [00] The text remarked that "~X EQU 1000~" does not assemble any instructions
@@ -615,7 +651,7 @@
 
 8. [24] What does the following program do?
 
-   #+BEGIN_SRC mixal
+   #+BEGIN_SRC mixal :tangle mystery.mixal
    * MYSTERY PROGRAM
    BUF ORIG *+3000
    1H  ENT1 1               rI1 = 1
